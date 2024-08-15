@@ -3,16 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/24 09:17:32 by marvin            #+#    #+#              #
-#    Updated: 2024/07/24 09:17:32 by marvin           ###   ########.fr        #
+#    Updated: 2024/08/15 12:14:25 by ele-borg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #variables
 
 SRC_FILES = push_swap.c \
+			algorithm.c \
+			instructions.c \
+			lst_functions.c \
+			utils_functions.c \
+			small_arguments.c
+
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
 NAME = push_swap
@@ -23,13 +29,10 @@ CC = cc
 
 #rules
 
-all: ${SUBDIR}_all ${NAME} 
-
-${SUBDIR}_all:
-	make -C ${SUBDIR}
+all: ${NAME} 
 
 ${NAME}: ${OBJ_FILES}
-	${CC} ${FLAGS} ${OBJ_FILES} -lft
+	${CC} ${FLAGS} ${OBJ_FILES} -o ${NAME}
 
 ${OBJ_FILES}: %.o: %.c
 	${CC} -c ${FLAGS} $< -o $@
