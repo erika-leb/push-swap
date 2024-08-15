@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:34:03 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/14 17:55:54 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/15 17:05:33 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,12 @@ long	ft_atoi_simple(char *str)
 			i++;
 	}
 	return (r * sign);
+}
+
+long	ft_abs(long nmb)
+{
+	if (nmb < 0)
+		return (- nmb);
+	else
+		return (nmb);
 }
