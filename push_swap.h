@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:17:20 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/15 17:07:08 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/16 15:24:57 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_list
 {
-	long int		content;
+	long 			content;
 	struct s_list	*next;
 }	t_list;
 
@@ -48,7 +48,8 @@ void	ft_reverse_rotate_b(int nmb_a, t_list **lst);
 long	define_sense_rotation(int nmb_a, t_list **lst);
 void	ft_atlgorithm(t_list **lst_a, t_list **lst_b);
 void	ft_rotate_two(int nmb_a, t_list **lst);
-void	ft_rotate_a(t_list **lst);
+void	ft_rotate_a(t_list **lst, long d);
+void	ft_rotate_three_in_a(t_list **lst);
 void 	two_arguments(t_list **lst);
 void 	three_arguments(t_list **lst);
 

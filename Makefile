@@ -6,7 +6,7 @@
 #    By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/24 09:17:32 by marvin            #+#    #+#              #
-#    Updated: 2024/08/15 12:14:25 by ele-borg         ###   ########.fr        #
+#    Updated: 2024/08/16 14:41:43 by ele-borg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ SRC_FILES = push_swap.c \
 			instructions.c \
 			lst_functions.c \
 			utils_functions.c \
-			small_arguments.c
+			small_arguments.c \
+			rotation_a.c \
+			rotation_b.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
@@ -44,5 +46,7 @@ fclean: clean
 	rm -f ${NAME}
 
 re: fclean all
+
+reclean : all clean
 
 .PHONY: all clean fclean re
