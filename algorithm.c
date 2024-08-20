@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:18:27 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/16 15:28:46 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/20 14:53:34 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,9 @@ void	ft_atlgorithm(t_list **lst_a, t_list **lst_b)
 		while (*lst_a != NULL) //on met tout a dans b
 		{
             //printf("n = %d\n", (*lst_a) -> content);
-			if (*lst_b != NULL)
-				ft_rotate_a(lst_a, (*lst_b) -> content);
+			// if (*lst_b != NULL && ft_lstsize(lst_a)> 1)
+			// 	ft_rotate_a_bis(lst_a, lst_b);
+				//ft_rotate_a(lst_b, (*lst_a) -> content);
 			sense_check = define_sense_rotation((*lst_a) -> content, lst_b);
 			if (sense_check == 1)
 			{
