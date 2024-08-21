@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:38:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/15 17:59:55 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:01:54 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void    PRINT_STACK(t_list  **lst) // a enlever a la fin
     current = *lst;
     v = ft_lstsize(lst);
     i = 0;
-    printf("taille = %d \n", v);
+    //printf("taille = %d \n", v);
     while (current != NULL)
     {
         printf("valeur %d = %ld\n", i, (current) -> content);

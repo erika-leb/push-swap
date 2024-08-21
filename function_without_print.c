@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 10:50:19 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/19 18:47:03 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:49:13 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ long	ft_rotate_two_without_print(int nmb_a, t_list **lst, t_list **lst_c)
 	t_list	*first;
 	t_list	*second;
 	long	nmb;
+	t_list	*new;
 
 	first = *lst;
 	second = first -> next;
@@ -25,13 +26,35 @@ long	ft_rotate_two_without_print(int nmb_a, t_list **lst, t_list **lst_c)
 	if (nmb_a > second -> content && nmb_a > first -> content && first -> content < second -> content)
 	{
 		ft_rotate(lst);
-		*lst_c = ft_lstnew(1); // 1 == rb
+		if (*lst_c == NULL)
+		{
+			*lst_c = ft_lstnew(1); // 1 == rb
+			//printf("mauvais cas /n");
+		}
+		else
+		{
+			new = ft_lstnew(1);
+			ft_lstadd_front(lst_c, new);
+			//printf("bon cas /n");
+		}
+		//printf("rb cache (faire)\n");
 	}
 	if (nmb_a < second -> content && nmb_a < first -> content && second -> content > first -> content)
 	{
 		ft_rotate(lst);
-		*lst_c = ft_lstnew(1);
+		if (*lst_c == NULL)
+		{
+			*lst_c = ft_lstnew(1); // 1 == rb
+			//printf("mauvais cas /n");
+		}
+		else
+		{
+			new = ft_lstnew(1);
+			ft_lstadd_front(lst_c, new);
+			//printf("bon cas /n");
+		}
 		nmb++;
+		//printf("rb cache (faire)\n");
 		//printf("cas 2\n");
 	}
 	// if (nmb_a < second -> content && nmb_a < first -> content && second -> content < first -> content)
@@ -42,8 +65,19 @@ long	ft_rotate_two_without_print(int nmb_a, t_list **lst, t_list **lst_c)
 	if (first -> content > nmb_a && nmb_a > second -> content)
 	{
 		ft_rotate(lst);
-		*lst_c = ft_lstnew(1);
+		if (*lst_c == NULL)
+		{
+			*lst_c = ft_lstnew(1); // 1 == rb
+			//printf("mauvais cas /n");
+		}
+		else
+		{
+			new = ft_lstnew(1);
+			ft_lstadd_front(lst_c, new);
+			//printf("bon cas /n");
+		}
 		//printf("cas 4\n");
+		//printf("rb cache (faire)\n");
 		nmb++;
 	}
 	return (nmb);
@@ -87,22 +121,27 @@ long	ft_rotate_b_without_print(int nmb_a, t_list **lst, t_list **lst_c) // peut 
 	}
 	else
 	{
+		//printf("PILE C\n");
+    	//PRINT_STACK(lst_c);
 		ft_rotate(lst);
 		if (*lst_c == NULL)
-			*lst_c = ft_lstnew(1);
+		{
+			*lst_c = ft_lstnew(1); // 1 == rb
+		}
 		else
 		{
 			new = ft_lstnew(1);
 			ft_lstadd_front(lst_c, new);
 		}
 		nmb++;
+		//printf("rb cache (faire) \n");
 		//printf("k\n");
 	}
     //printf("nmb = %d, ft = %d\n", nmb_a, ft_in_decresent_order(lst));
 	first = *lst;
 	last = ft_lstlast(*lst);
 	}
-	printf("nmb dans la fonction = %ld\n", nmb);
+	//printf("nmb dans la fonction = %ld\n", nmb);
 	return (nmb);
 }
 
@@ -144,16 +183,25 @@ long	ft_reverse_rotate_b_without_print(int nmb_a, t_list **lst, t_list **lst_c)
 	}
 	else
 	{
-		ft_reverse_rotate(lst);
+		ft_reverse_rotate(lst);\
+		// 		printf("PILE C\n");
+    	// PRINT_STACK(lst_c);
 		if (*lst_c == NULL)
+		{
 			*lst_c = ft_lstnew(2); // 2 == rrb
+			//printf("mauvais cas /n");
+		}
 		else
 		{
 			new = ft_lstnew(2);
 			ft_lstadd_front(lst_c, new);
+			//printf("bon cas /n");
 		}
+		//printf("rrb cache (faire)\n");
 		nmb++;
 		//printf("k\n");
+				//printf("PILE C\n");
+    	//PRINT_STACK(lst_c);
 	}
     //printf("nmb = %d, ft = %d\n", nmb_a, ft_in_decresent_order(lst));
 	first = *lst;
@@ -167,6 +215,6 @@ long	ft_reverse_rotate_b_without_print(int nmb_a, t_list **lst, t_list **lst_c)
     //     first = *lst;
     //     last = ft_lstlast(*lst);
     // }
-	printf("nmb dans la fonction = %ld\n", nmb);
+	//printf("nmb dans la fonction = %ld\n", nmb);
 	return (nmb);
 }

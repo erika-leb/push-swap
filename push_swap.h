@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:17:20 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/19 17:43:45 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:57:53 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ void 	three_arguments(t_list **lst);
 long	case_a(t_list **lst_a, t_list **lst_b);
 long	case_b(t_list **lst_a, t_list **lst_b);
 long	case_c(t_list **lst_a, t_list **lst_b);
+void	case_3_in_a(t_list **lst_a, t_list **lst_b);
+long	case_general(t_list **lst_a, t_list **lst_b, long p);
 long	ft_rotate_two_without_print(int nmb_a, t_list **lst, t_list **lst_c);
 long	ft_rotate_b_without_print(int nmb_a, t_list **lst, t_list **lst_c);
 long	ft_reverse_rotate_b_without_print(int nmb_a, t_list **lst, t_list **lst_c);
-void	undo_instructions(t_list **lst_b, t_list **lst_c);
+void	undo_instructions(t_list **lst_a, t_list **lst_b, t_list **lst_c);
 
 void    PRINT_STACK(t_list  **lst);
 
