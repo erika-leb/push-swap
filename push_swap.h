@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:17:20 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/20 16:57:53 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/21 18:27:28 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		ft_in_decresent_order(t_list **lst);
 void	ft_rotate_b(int nub_a, t_list **lst);
 void	ft_reverse_rotate_b(int nmb_a, t_list **lst);
 long	define_sense_rotation(int nmb_a, t_list **lst);
+long	define_sense_rotation_bis(t_list **lst);
 void	ft_atlgorithm(t_list **lst_a, t_list **lst_b);
 void	ft_rotate_two(int nmb_a, t_list **lst);
 void	ft_rotate_a(t_list **lst, long d);

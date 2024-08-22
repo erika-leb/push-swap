@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:38:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/21 17:48:58 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/22 23:34:59 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,22 @@ void	undo_instructions(t_list **lst_a, t_list **lst_b, t_list **lst_c)
 		if (current -> content == 1)
 		{
 			ft_reverse_rotate(lst_b);
-			printf("rrb cache (defaire)\n");
+			//printf("rrb cache (defaire)\n");
 		}
 		if (current -> content == 2)
 		{
 			ft_rotate(lst_b);
-			printf("rb cache(defaire)\n");
+			//printf("rb cache(defaire)\n");
 		}
 		if (current -> content == 3)
 		{
 			ft_reverse_rotate(lst_a);
-			printf("rra cache(defaire)\n"); //ici
+			//printf("rra cache(defaire)\n"); //ici
 		}
 		if (current -> content == 4)
 		{
 			ft_rotate(lst_a);
-			printf("ra cache (defaire)\n");
+			//printf("ra cache (defaire)\n");
 		}
 		current = current -> next;
 	}
@@ -203,7 +203,11 @@ long	case_general(t_list **lst_a, t_list **lst_b, long p)
 			p++;
 		}
 	}
+	//printf("nmb en a = %ld\n", nmb);
 	sense_check = define_sense_rotation((*lst_a) -> content, lst_b);
+	//printf("sense = %ld, (*lst_a) -> content = %ld\n", sense_check, (*lst_a) -> content);
+	// printf("PILE B\n");
+    // PRINT_STACK(lst_b);
 	if (sense_check == 1)
 		nmb = nmb + ft_rotate_b_without_print((*lst_a) -> content, lst_b, &lst_c);
 	if (sense_check == 0)
@@ -250,7 +254,7 @@ void	ft_rotate_a_bis(t_list **lst_a, t_list **lst_b)
     	// printf("PILE B\n");
     	// PRINT_STACK(lst_b);
 			nmb_current = case_general(lst_a, lst_b, p);
-			printf("nmb_min = %ld, nmb_current = %ld, p = %ld, p_min = %ld\n", nmb_min, nmb_current, p, p_min);
+			//printf("nmb_min = %ld, nmb_current = %ld, p = %ld, p_min = %ld\n", nmb_min, nmb_current, p, p_min);
 			if (nmb_min > nmb_current)
 			{
 				nmb_min = nmb_current;
@@ -258,7 +262,7 @@ void	ft_rotate_a_bis(t_list **lst_a, t_list **lst_b)
 			}
 			p++;
 		}
-		// //printf("p_min = %ld, nmb_min = %ld\n", p_min, nmb_min);
+		//printf("p_min = %ld, nmb_min = %ld\n", p_min, nmb_min);
 		// printf("stacks apres modif :\n");
 		// printf("PILE A\n");
 		// PRINT_STACK(lst_a);

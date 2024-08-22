@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:18:27 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/21 17:54:44 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/22 23:28:23 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,17 @@ long	define_sense_rotation(int nmb_a, t_list **lst)
 	if (ft_lstsize(lst) == 0)
 		return (-1);
 	current = *lst;
+	j = 0;
+	//printf("nmb_a dans fonction = %d\n", nmb_a);
+	diff = ft_abs(nmb_a - (current -> content));
 	while (current != NULL)
 	{
 		if (ft_abs(nmb_a - current -> content) < diff) //mettre a la valeur absolue
 		{
-			diff = ft_abs(nmb_a - current -> content);
+			diff = ft_abs(nmb_a - (current -> content));
 			j = i;
 		}
+		//printf("nmb_a dans fonction = %d, current -> content = %ld, diff = %ld, j = %ld, i = %ld\n", nmb_a, (current -> content), diff, j, i);
 		current = current -> next;
 		i++;
 	}
@@ -99,6 +103,36 @@ long	define_sense_rotation(int nmb_a, t_list **lst)
 	return (r);
 }
 
+long	define_sense_rotation_bis(t_list **lst)
+{
+	t_list	*current;
+	long	i;
+	long	min;
+	long	size;
+	long	i_min;
+
+	i = 0;
+	i_min = 0;
+	current = *lst;
+	size = ft_lstsize(lst);
+	//printf("size = %ld\n", size);
+	min = current -> content;
+	while (i < size)
+	{
+		if (current -> content < min)
+		{
+			min = current -> content;
+			i_min = i;
+		}
+		i++;
+		current = current -> next;
+	}
+	if (i_min < size / 2)
+		return (1);
+	else
+		return (0);
+}
+
 void	ft_atlgorithm(t_list **lst_a, t_list **lst_b)
 {
 	long	sense_check;
@@ -108,9 +142,9 @@ void	ft_atlgorithm(t_list **lst_a, t_list **lst_b)
 		while (*lst_a != NULL) //on met tout a dans b
 		{
             //printf("n = %d\n", (*lst_a) -> content);
-			//if (*lst_b != NULL && ft_lstsize(lst_a) > 1)
+			if (*lst_b != NULL && ft_lstsize(lst_a) > 1)
 			{
-				//ft_rotate_a_bis(lst_a, lst_b);
+				ft_rotate_a_bis(lst_a, lst_b);
 				//ft_rotate_a(lst_b, (*lst_a) -> content);
 				// printf("PILE A\n");
             	// PRINT_STACK(lst_a);
@@ -150,16 +184,46 @@ void	ft_atlgorithm(t_list **lst_a, t_list **lst_b)
             // ft_rotate_b((*lst_a) -> content, lst_b);
             // ft_push_x_to_y(lst_a, lst_b);
 		}
-		while (ft_in_decresent_order(lst_b) == -1) // on fait tourner b jusqu'a ce qu'il soit dans l'ordre
+		// while (ft_in_decresent_order(lst_b) == -1) // on fait tourner b jusqu'a ce qu'il soit dans l'ordre
+		// 	{
+		// 		ft_rotate(lst_b);
+		// 		write(1, "rb\n", 3);
+        //     // printf("PILE A\n");
+        //     // PRINT_STACK(lst_a);
+        //     // printf("PILE B\n");
+        //     // PRINT_STACK(lst_b);
+        //     // if (verif(lst_b) > 1)
+        //     //     break;
+		// 	}
+		sense_check = define_sense_rotation_bis(lst_b);
+		//printf("sense = %ld\n", sense_check);
+		if (sense_check == 1)
 		{
-			ft_rotate(lst_b);
-			write(1, "rb\n", 3);
+			while (ft_in_decresent_order(lst_b) == -1) // on fait tourner b jusqu'a ce qu'il soit dans l'ordre
+			{
+				ft_rotate(lst_b);
+				write(1, "rb\n", 3);
             // printf("PILE A\n");
             // PRINT_STACK(lst_a);
             // printf("PILE B\n");
             // PRINT_STACK(lst_b);
             // if (verif(lst_b) > 1)
             //     break;
+			}
+		}
+		else if (sense_check == 0)
+		{
+			while (ft_in_decresent_order(lst_b) == -1) // on fait tourner b jusqu'a ce qu'il soit dans l'ordre
+			{
+				ft_reverse_rotate(lst_b);
+				write(1, "rrb\n", 4);
+            // printf("PILE A\n");
+            // PRINT_STACK(lst_a);
+            // printf("PILE B\n");
+            // PRINT_STACK(lst_b);
+            // if (verif(lst_b) > 1)
+            //     break;
+			}
 		}
 		while (*lst_b != NULL) // mettre tout b dans a
 		{
