@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:18:27 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/22 23:28:23 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:30:45 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,7 @@ void	ft_atlgorithm(t_list **lst_a, t_list **lst_b)
             //printf("n = %d\n", (*lst_a) -> content);
 			if (*lst_b != NULL && ft_lstsize(lst_a) > 1)
 			{
-				ft_rotate_a_bis(lst_a, lst_b);
-				//ft_rotate_a(lst_b, (*lst_a) -> content);
+				ft_rotate_a(lst_a, lst_b);
 				// printf("PILE A\n");
             	// PRINT_STACK(lst_a);
             	// printf("PILE B\n");
@@ -168,21 +167,7 @@ void	ft_atlgorithm(t_list **lst_a, t_list **lst_b)
             // PRINT_STACK(lst_a);
             // printf("PILE B\n");
             // PRINT_STACK(lst_b);
-            // printf("n = %d\n", (*lst_a) -> content);
-            // ft_rotate_b((*lst_a) -> content, lst_b);
-            // ft_push_x_to_y(lst_a, lst_b);
-            // printf("n = %d\n", (*lst_a) -> content);
-            // ft_rotate_b((*lst_a) -> content, lst_b);
-            // ft_push_x_to_y(lst_a, lst_b);
-            // printf("n = %d\n", (*lst_a) -> content);
-            // ft_rotate_b((*lst_a) -> content, lst_b);
-            // ft_push_x_to_y(lst_a, lst_b);
-            // printf("n = %d\n", (*lst_a) -> content);
-            // ft_rotate_b((*lst_a) -> content, lst_b);
-            // ft_push_x_to_y(lst_a, lst_b);
-            // printf("n = %d\n", (*lst_a) -> content);
-            // ft_rotate_b((*lst_a) -> content, lst_b);
-            // ft_push_x_to_y(lst_a, lst_b);
+
 		}
 		// while (ft_in_decresent_order(lst_b) == -1) // on fait tourner b jusqu'a ce qu'il soit dans l'ordre
 		// 	{

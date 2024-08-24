@@ -6,83 +6,102 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:38:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/21 22:58:03 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/24 18:01:14 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	int_check(int nv, char **arg)
+t_list	*ft_get_arg_in_lst(char *str)
 {
-	int	i;
-	int	j;
+	long	i;
+	long	r;
+	t_list	*lst;
+	t_list	*new;
 
-	i = 1;
+	lst = NULL;
+	i = 0;
+	if (!str)
+		return(NULL);
+	while (str[i] && str[i] >= 32 && str[i] <= 126)
+	{
+		r = ft_atoi_simple(str, &i);
+		new = ft_lstnew(r);
+		if (new == NULL)
+			return (NULL);
+		if (lst != NULL)
+			ft_lstadd_back(&lst, new);
+		else
+		{
+			lst = ft_lstnew(r);
+			if (lst == NULL)
+				return (NULL);
+		}
+	}
+	return (lst);
+}
+
+void	case_management(int nv, t_list	**lst_a, t_list	**lst_b)
+{
+	if (nv == 3) // 2 argument
+		two_arguments(lst_a);
+	else if (nv == 4) // 3 arguments
+		three_arguments(lst_a);
+	else if (nv > 4)
+		ft_atlgorithm(lst_a, lst_b);
+    // //JUSTE POUR TEST
+            printf("PILE A\n");
+            PRINT_STACK(lst_a);
+            printf("PILE B\n");
+            PRINT_STACK(lst_b);
+     // //FIN TEST
+	 	//printf("MIN INT = %d, MAX INT = %d\n", INT_MIN, INT_MAX);
+	ft_lstclear(*lst_a);
+	ft_lstclear(*lst_b);
+}
+
+int	create_lst(t_list **lst, int nv, char **arg)
+{
+	int		i;
+	t_list	*new;
+
+	i = 2;
+	*lst = ft_get_arg_in_lst(arg[1]);
+	if (lst == NULL)
+		return (1);
 	while (i < nv)
 	{
-		j = 0;
-		if (arg[i][0] == '+' || arg[i][0] == '-')
-			j = 1;
-		while (arg[i][j])
+		new = ft_get_arg_in_lst(arg[i]);
+		ft_lstadd_back(lst, new);
+		i++;
+	}
+	return (0);
+}
+
+int	main(int nv, char **arg)
+{
+	t_list		*lst_a;
+	t_list		*lst_b;
+	int			j;
+
+	lst_a = NULL;
+	lst_b = NULL;    
+	if (nv > 1)
+	{
+		if (int_check(nv, arg) == -1)
 		{
-			if (arg[i][j] < '0' || arg[i][j] > '9')
-				return (-1);
-			j++;
+			write(2, "Error\n", 6);
+			return (0);
 		}
-		i++;
-	}
-	return (0);
-}
-
-int	ft_cmp_lst(int  content, t_list **lst, int i)
-{
-	t_list	*current;
-	int		k;
-
-	k = 0;
-	current = *lst;
-	while (current != NULL && k < i)
-	{
-		if (content == current -> content)
-			return (-1);
-		current = current -> next;
-		k++;
-	}
-	return (0);
-}
-
-int	check_double(t_list  **lst)
-{
-	t_list	*current;
-	int		i;
-
-	current = *lst;
-	i = 0;
-	while (current != NULL)
-	{
-		if (ft_cmp_lst(current -> content, lst, i) == -1)
-			return (-1);
-		current = current -> next;
-		i++;
-	}
-	return (0);
-}
-
-int	check_max_min(t_list  **lst)
-{
-	t_list	*current;
-	int		i;
-
-	current = *lst;
-	i = 0;
-	//printf("test\n");
-	while (current != NULL)
-	{
-		//printf("content current = %ld\n", current -> content);
-		if (current -> content > INT_MAX || current -> content < INT_MIN)
-			return (-1);
-		current = current -> next;
-		i++;
+		j = create_lst(&lst_a, nv, arg);
+		if (j == 1)
+			return (1);
+		if (check_double(&lst_a) == -1 || check_max_min(&lst_a) == -1)
+		{
+			write(2, "Error\n", 6);
+			return (1);
+		}
+		case_management(nv, &lst_a, &lst_b);
 	}
 	return (0);
 }
@@ -90,82 +109,19 @@ int	check_max_min(t_list  **lst)
 void    PRINT_STACK(t_list  **lst) // a enlever a la fin
 {
     t_list  *current;
-    int v;
+    //int v;
     int i;
         
     current = *lst;
-    v = ft_lstsize(lst);
+	//printf("test\n");
+    //v = ft_lstsize(lst);
     i = 0;
     //printf("taille = %d \n", v);
+	//printf("test\n");
     while (current != NULL)
     {
         printf("valeur %d = %ld\n", i, (current) -> content);
         current = current -> next;
         i++;
     }
-}
-
-int	main(int nv, char **arg)
-{
-	int			i;
-	t_list		*new;
-	t_list		*lst_a;
-	t_list		*lst_b;
-    //int     size;
-
-	lst_a = NULL;
-	lst_b = NULL;    
-	if (nv > 1)
-	{
-		if (int_check(nv, arg) == -1)
-			write(1, "Error\n", 6);
-		else
-		{
-			i = 2;
-            //j = 0;
-            //printf("arg[1] = %s\n", arg[1]);
-            //printf("ft_atoi(arg[1]) = %d\n", ft_atoi_simple(arg[1]));
-			lst_a = ft_lstnew(ft_atoi_simple(arg[1]));
-            //printf("lst 1 = %d\n", (lst_a[0]) -> content);
-			while (i < nv)
-			{
-				new = ft_lstnew(ft_atoi_simple(arg[i]));
-				ft_lstadd_back(&lst_a, new);
-                //j++;
-                //printf("*lst -> content = %d\n", (lst[j]) -> content);
-				i++;
-			}
-            //ft_push_x_to_y(&lst_a, &lst_b);
-            //ft_push_x_to_y(&lst_a, &lst_b);
-			if (check_double(&lst_a) == -1 || check_max_min(&lst_a) == -1)
-			{
-				write(1, "Error\n", 6);
-				return (0);
-			}
-			//JUSTE POUR TEST
-            // printf("PILE A\n");
-            // PRINT_STACK(&lst_a);
-            // printf("PILE B\n");
-            // PRINT_STACK(&lst_b);
-            //FIN TEST
-			//printf("MIN INT = %d, MAX INT = %d\n", INT_MIN, INT_MAX);
-			if (nv == 3) // 2 argument
-				two_arguments(&lst_a);
-			else if (nv == 4) // 3 arguments
-				three_arguments(&lst_a);
-			else if (nv > 4)
-				ft_atlgorithm(&lst_a, &lst_b);
-            //printf("ën ordre? %d\n", ft_in_decresent_order(&lst_a));
-
-            //JUSTE POUR TEST
-            // printf("PILE A\n");
-            // PRINT_STACK(&lst_a);
-            // printf("PILE B\n");
-            // PRINT_STACK(&lst_b);
-            //FIN TEST
-			ft_lstclear(lst_a);
-			ft_lstclear(lst_b);
-		}
-	}
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:17:20 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/21 18:27:28 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/24 18:00:58 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstclear(t_list *lst);
 int		ft_strlen(char *s);
-long	ft_atoi_simple(char *str);
+long	ft_atoi_simple(char *str, long *i);
+t_list	*ft_get_arg_in_lst(char *str);
 long	ft_abs(long nmb);
+int		error_management(t_list	**lst_a);
+int		create_lst(t_list **lst, int nv, char **arg);
+void	case_management(int nv, t_list	**lst_a, t_list	**lst_b);
 void	ft_swap(t_list **lst);
 void	ft_push_x_to_y(t_list **lst_x, t_list **lst_y);
 void	ft_rotate(t_list **lst);
@@ -50,8 +54,7 @@ long	define_sense_rotation(int nmb_a, t_list **lst);
 long	define_sense_rotation_bis(t_list **lst);
 void	ft_atlgorithm(t_list **lst_a, t_list **lst_b);
 void	ft_rotate_two(int nmb_a, t_list **lst);
-void	ft_rotate_a(t_list **lst, long d);
-void	ft_rotate_a_bis(t_list **lst_a, t_list **lst_b);
+void	ft_rotate_a(t_list **lst_a, t_list **lst_b);
 void	ft_rotate_three_in_a(t_list **lst);
 void 	two_arguments(t_list **lst);
 void 	three_arguments(t_list **lst);

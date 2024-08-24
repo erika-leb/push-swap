@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:32:21 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/14 17:56:27 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/24 18:00:30 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ t_list	*ft_lstnew(long content)
 
 	new = malloc(sizeof(t_list));
 	if (new == NULL)
+	{
 		return (NULL);
+		write(2, "Erreur memory allocation\n", 26);
+	}
 	new -> content = content;
 	new ->  next = NULL;
 	return (new);

@@ -6,19 +6,19 @@
 #    By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/24 09:17:32 by marvin            #+#    #+#              #
-#    Updated: 2024/08/19 19:22:15 by ele-borg         ###   ########.fr        #
+#    Updated: 2024/08/24 16:50:04 by ele-borg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #variables
 
 SRC_FILES = push_swap.c \
+			error_management.c \
 			algorithm.c \
 			instructions.c \
 			lst_functions.c \
 			utils_functions.c \
 			small_arguments.c \
-			rotation_a_bis.c \
 			rotation_a.c \
 			rotation_b.c \
 			function_without_print.c
