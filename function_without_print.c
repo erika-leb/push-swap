@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 10:50:19 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/21 17:49:13 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:25:27 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,17 @@ long	ft_rotate_b_without_print(int nmb_a, t_list **lst, t_list **lst_c) // peut 
 	if (nmb_a > first -> content && nmb_a < last -> content)
 	{
 		//printf("cas 1");
-		return (0);
+		return (nmb);
 	}
 	if (nmb_a > first -> content && ft_in_decresent_order(lst) == 0)
 	{
 		//printf("cas 2");
-		return (0);
+		return (nmb);
 	}
 	if (nmb_a < last -> content && ft_in_decresent_order(lst) == 0)
 	{
 		//printf("cas 3");
-		return (0);
+		return (nmb);
 	}
 	else
 	{

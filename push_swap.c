@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:38:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/24 18:01:14 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:26:19 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	case_management(int nv, t_list	**lst_a, t_list	**lst_b)
 	else if (nv > 4)
 		ft_atlgorithm(lst_a, lst_b);
     // //JUSTE POUR TEST
-            printf("PILE A\n");
-            PRINT_STACK(lst_a);
-            printf("PILE B\n");
-            PRINT_STACK(lst_b);
+            // printf("PILE A\n");
+            // PRINT_STACK(lst_a);
+            // printf("PILE B\n");
+            // PRINT_STACK(lst_b);
      // //FIN TEST
 	 	//printf("MIN INT = %d, MAX INT = %d\n", INT_MIN, INT_MAX);
 	ft_lstclear(*lst_a);

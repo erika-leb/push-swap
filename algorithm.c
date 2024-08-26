@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:18:27 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/23 18:30:45 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:26:27 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_in_decresent_order(t_list **lst) // retourne 0 si ordonnee, -1 sinon, pou
 }
 
 
-int     verif(t_list **lst)
+int     verif(t_list **lst)    // a supprimer plus tard
 {
     int i;
     t_list  *current;
@@ -139,17 +139,16 @@ void	ft_atlgorithm(t_list **lst_a, t_list **lst_b)
 
 	if (ft_in_cresent_order(lst_a) == -1)
 	{
+		//////////////// ROTATION DE A AVANT PUSH A SUR B  ////////////////////
+		//while (*lst_a != NULL && ft_in_cresent_order(lst_a) == -1)
 		while (*lst_a != NULL) //on met tout a dans b
 		{
             //printf("n = %d\n", (*lst_a) -> content);
 			if (*lst_b != NULL && ft_lstsize(lst_a) > 1)
 			{
 				ft_rotate_a(lst_a, lst_b);
-				// printf("PILE A\n");
-            	// PRINT_STACK(lst_a);
-            	// printf("PILE B\n");
-            	// PRINT_STACK(lst_b);
 			}
+		//////////////// ROTATION DE B AVANT PUSH A SUR B  ////////////////////
 			sense_check = define_sense_rotation((*lst_a) -> content, lst_b);
 			if (sense_check == 1)
 			{
@@ -161,25 +160,16 @@ void	ft_atlgorithm(t_list **lst_a, t_list **lst_b)
 			 	ft_reverse_rotate_b((*lst_a) -> content, lst_b);
 				//printf("reverse-rotate\n");
 			}
+		///////////////////////////   PUSH A SUR B  ////////////////////
 			ft_push_x_to_y(lst_a, lst_b); //on met a sur b
 			write(1, "pb\n", 3);
-			// printf("PILE A\n");
+			//             printf("PILE A\n");
             // PRINT_STACK(lst_a);
             // printf("PILE B\n");
             // PRINT_STACK(lst_b);
-
 		}
-		// while (ft_in_decresent_order(lst_b) == -1) // on fait tourner b jusqu'a ce qu'il soit dans l'ordre
-		// 	{
-		// 		ft_rotate(lst_b);
-		// 		write(1, "rb\n", 3);
-        //     // printf("PILE A\n");
-        //     // PRINT_STACK(lst_a);
-        //     // printf("PILE B\n");
-        //     // PRINT_STACK(lst_b);
-        //     // if (verif(lst_b) > 1)
-        //     //     break;
-		// 	}
+	}
+		//////////////// ROTATION DE B POUR PREPARER LA MISE DANS A  ////////////////////
 		sense_check = define_sense_rotation_bis(lst_b);
 		//printf("sense = %ld\n", sense_check);
 		if (sense_check == 1)
@@ -210,10 +200,10 @@ void	ft_atlgorithm(t_list **lst_a, t_list **lst_b)
             //     break;
 			}
 		}
+		//////////////// MISE DE B DANS A  ////////////////////
 		while (*lst_b != NULL) // mettre tout b dans a
 		{
 			ft_push_x_to_y(lst_b, lst_a);
 			write(1, "pa\n", 3);
 		}
 	}
-}

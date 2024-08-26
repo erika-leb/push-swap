@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:38:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/23 14:41:00 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:39:34 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,12 +208,14 @@ long	case_general(t_list **lst_a, t_list **lst_b, long p)
 	//printf("sense = %ld, (*lst_a) -> content = %ld\n", sense_check, (*lst_a) -> content);
 	// printf("PILE B\n");
     // PRINT_STACK(lst_b);
+	//printf("nmb av rotation b = %ld, sense = %ld\n", nmb, sense_check);
 	if (sense_check == 1)
 		nmb = nmb + ft_rotate_b_without_print((*lst_a) -> content, lst_b, &lst_c);
 	if (sense_check == 0)
 		nmb = nmb + ft_reverse_rotate_b_without_print((*lst_a) -> content, lst_b, &lst_c);
 	//printf("PILE C\n");
     //PRINT_STACK(&lst_c);
+	//printf("nmb ap rotation b = %ld\n", nmb);
 	undo_instructions(lst_a, lst_b, &lst_c);
 	ft_lstclear(lst_c);
 	return (nmb);	
@@ -231,10 +233,10 @@ void	ft_rotate_a(t_list **lst_a, t_list **lst_b)
 		return ;
 		//printf("case 1 ou 2, pas de mouvements sur a\n");
 	}
-	if (ft_lstsize(lst_a) == 3)
-	{
-		case_3_in_a(lst_a, lst_b);
-	}
+	// if (ft_lstsize(lst_a) == 3)
+	// {
+	// 	case_3_in_a(lst_a, lst_b);
+	// }
 	else
 	{
 		p = 0;
@@ -270,18 +272,18 @@ void	ft_rotate_a(t_list **lst_a, t_list **lst_b)
     	// PRINT_STACK(lst_b);
 		if (p_min == 0)
 			return ;
-		if (p_min == 1)
-		{
-			ft_swap(lst_a);
-			write(1, "sa\n", 3);
-			// 			printf("PILE A\n");
-            // PRINT_STACK(lst_a);
-            // printf("PILE B\n");
-            // PRINT_STACK(lst_b);
-		}
+		// if (p_min == 1)
+		// {
+		// 	ft_swap(lst_a);
+		// 	write(1, "sa\n", 3);
+		// 	// 			printf("PILE A\n");
+        //     // PRINT_STACK(lst_a);
+        //     // printf("PILE B\n");
+        //     // PRINT_STACK(lst_b);
+		// }
 		else
 		{
-			if (p_min <= ft_lstsize(lst_a) / 2)
+			if (p_min < ft_lstsize(lst_a) / 2)
 				while (p_min != 0)
 				{
 					ft_rotate(lst_a);

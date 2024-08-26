@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:17:20 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/24 18:00:58 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/24 18:42:19 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int		ft_strlen(char *s);
 long	ft_atoi_simple(char *str, long *i);
 t_list	*ft_get_arg_in_lst(char *str);
 long	ft_abs(long nmb);
-int		error_management(t_list	**lst_a);
 int		create_lst(t_list **lst, int nv, char **arg);
 void	case_management(int nv, t_list	**lst_a, t_list	**lst_b);
 void	ft_swap(t_list **lst);
