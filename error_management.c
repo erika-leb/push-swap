@@ -6,13 +6,13 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 16:48:33 by ele-borg          #+#    #+#             */
-/*   Updated: 2024/08/24 16:50:28 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/27 00:06:09 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	int_check(int nv, char **arg)
+int	ft_int_check(int nv, char **arg)
 {
 	int	i;
 	int	j;
@@ -58,7 +58,7 @@ int	ft_cmp_lst(int  content, t_list **lst, int i)
 	return (0);
 }
 
-int	check_double(t_list  **lst)
+int	ft_check_double(t_list  **lst)
 {
 	t_list	*current;
 	int		i;
@@ -75,7 +75,7 @@ int	check_double(t_list  **lst)
 	return (0);
 }
 
-int	check_max_min(t_list  **lst)
+int	ft_check_max_min(t_list  **lst)
 {
 	t_list	*current;
 	int		i;

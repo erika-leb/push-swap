@@ -6,13 +6,13 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 12:13:55 by ele-borg          #+#    #+#             */
-/*   Updated: 2024/08/15 13:36:49 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/27 00:13:45 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void two_arguments(t_list **lst)
+void ft_two_arguments(t_list **lst)
 {
 	t_list	*first;
 	t_list	*second;
@@ -27,7 +27,7 @@ void two_arguments(t_list **lst)
 }
 
 
-void three_arguments(t_list **lst)
+void ft_three_arguments(t_list **lst)
 {
 	t_list	*first;
 	t_list	*second;

@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:38:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/26 15:26:19 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:11:15 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,7 @@ t_list	*ft_get_arg_in_lst(char *str)
 	return (lst);
 }
 
-void	case_management(int nv, t_list	**lst_a, t_list	**lst_b)
-{
-	if (nv == 3) // 2 argument
-		two_arguments(lst_a);
-	else if (nv == 4) // 3 arguments
-		three_arguments(lst_a);
-	else if (nv > 4)
-		ft_atlgorithm(lst_a, lst_b);
-    // //JUSTE POUR TEST
-            // printf("PILE A\n");
-            // PRINT_STACK(lst_a);
-            // printf("PILE B\n");
-            // PRINT_STACK(lst_b);
-     // //FIN TEST
-	 	//printf("MIN INT = %d, MAX INT = %d\n", INT_MIN, INT_MAX);
-	ft_lstclear(*lst_a);
-	ft_lstclear(*lst_b);
-}
-
-int	create_lst(t_list **lst, int nv, char **arg)
+int	ft_create_lst(t_list **lst, int nv, char **arg)
 {
 	int		i;
 	t_list	*new;
@@ -78,6 +59,25 @@ int	create_lst(t_list **lst, int nv, char **arg)
 	return (0);
 }
 
+void	ft_case_management(int nv, t_list	**lst_a, t_list	**lst_b)
+{
+	if (nv == 3) // 2 argument
+		ft_two_arguments(lst_a);
+	else if (nv == 4) // 3 arguments
+		ft_three_arguments(lst_a);
+	else if (nv > 4)
+		ft_atlgorithm(lst_a, lst_b);
+    // //JUSTE POUR TEST
+            // printf("PILE A\n");
+            // PRINT_STACK(lst_a);
+            // printf("PILE B\n");
+            // PRINT_STACK(lst_b);
+     // //FIN TEST
+	 	//printf("MIN INT = %d, MAX INT = %d\n", INT_MIN, INT_MAX);
+	ft_lstclear(*lst_a);
+	ft_lstclear(*lst_b);
+}
+
 int	main(int nv, char **arg)
 {
 	t_list		*lst_a;
@@ -88,20 +88,20 @@ int	main(int nv, char **arg)
 	lst_b = NULL;    
 	if (nv > 1)
 	{
-		if (int_check(nv, arg) == -1)
+		if (ft_int_check(nv, arg) == -1)
 		{
 			write(2, "Error\n", 6);
 			return (0);
 		}
-		j = create_lst(&lst_a, nv, arg);
+		j = ft_create_lst(&lst_a, nv, arg);
 		if (j == 1)
 			return (1);
-		if (check_double(&lst_a) == -1 || check_max_min(&lst_a) == -1)
+		if (ft_check_double(&lst_a) == -1 || ft_check_max_min(&lst_a) == -1)
 		{
 			write(2, "Error\n", 6);
 			return (1);
 		}
-		case_management(nv, &lst_a, &lst_b);
+		ft_case_management(nv, &lst_a, &lst_b);
 	}
 	return (0);
 }
