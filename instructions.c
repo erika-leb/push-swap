@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 10:50:19 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/27 14:14:09 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:22:55 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	ft_swap(t_list **lst)
 {
-	t_list 	*temp;
-    //t_list  *current;
+	t_list	*temp;
 
 	if (*lst == NULL)
 		return ;
 	temp = *lst;
-	*lst = (*lst) -> next;
-	temp -> next = (*lst) -> next;
-	(*lst) -> next = temp; 
+	*lst = (*lst)-> next;
+	temp -> next = (*lst)-> next;
+	(*lst)-> next = temp;
 }
 
 void	ft_push_x_to_y(t_list **lst_x, t_list **lst_y)
@@ -32,9 +31,9 @@ void	ft_push_x_to_y(t_list **lst_x, t_list **lst_y)
 	if (*lst_x == NULL)
 		return ;
 	temp = *lst_x;
-	*lst_x = (*lst_x) -> next;
+	*lst_x = (*lst_x)-> next;
 	temp -> next = *lst_y;
-	*lst_y = temp; 
+	*lst_y = temp;
 }
 
 void	ft_rotate(t_list **lst)
@@ -42,10 +41,10 @@ void	ft_rotate(t_list **lst)
 	t_list	*temp;
 	t_list	*current;
 
-	if (*lst == NULL || (*lst) -> next == NULL)
+	if (*lst == NULL || (*lst)-> next == NULL)
 		return ;
 	temp = *lst;
-	(*lst) = (*lst) -> next;
+	(*lst) = (*lst)-> next;
 	temp -> next = NULL;
 	current = *lst;
 	while (current -> next != NULL)
@@ -59,7 +58,7 @@ void	ft_reverse_rotate(t_list **lst)
 	t_list	*prec;
 	t_list	*temp;
 
-	if (*lst == NULL || (*lst) -> next == NULL)
+	if (*lst == NULL || (*lst)-> next == NULL)
 		return ;
 	current = *lst;
 	while (current -> next != NULL)

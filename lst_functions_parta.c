@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_functions.c                                    :+:      :+:    :+:   */
+/*   lst_functions_parta.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:32:21 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/27 14:13:59 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/09/01 16:28:06 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,33 @@ t_list	*ft_lstnew(long content)
 	new = malloc(sizeof(t_list));
 	if (new == NULL)
 	{
-		return (NULL);
 		write(2, "Erreur memory allocation\n", 26);
+		return (NULL);
 	}
 	new -> content = content;
-	new ->  next = NULL;
+	new -> next = NULL;
 	return (new);
 }
+
+// t_list	*ft_lstnew2(long content)
+// {
+// 	t_list	*new;
+
+//  	if (content == 1)
+//     {
+//         write(2, "Erreur condition artificielle\n", 30);
+//         return (NULL);
+//     }
+// 	new = malloc(sizeof(t_list));
+// 	if (new == NULL)
+// 	{
+// 		write(2, "Erreur memory allocation\n", 26);
+// 		return (NULL);
+// 	}
+// 	new -> content = content;
+// 	new -> next = NULL;
+// 	return (new);
+// }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
@@ -36,57 +56,16 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 int	ft_lstsize(t_list **lst)
 {
 	int		s;
-	t_list	*current; 
+	t_list	*current;
 
 	s = 0;
 	current = *lst;
 	if (*lst == NULL)
 		return (0);
-	while (current != NULL) 
+	while (current != NULL)
 	{
 		s++;
 		current = current -> next;
 	}
 	return (s);
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	t_list	*current;
-
-	if (lst == NULL)
-		return (NULL);
-	current = lst;
-	while (current -> next != NULL)
-		current = current -> next;
-	return (current);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*current;
-
-	if (!new)
-		return ;
-	if (!lst)
-	{
-		*lst = new;
-		return ;
-	}
-	current = *lst;
-	while (current -> next != NULL)
-		current = current -> next;
-	current -> next = new;
-}
-
-void	ft_lstclear(t_list *lst)
-{   
-	t_list	*current;
-	while (lst != NULL)
-	{
-		current = (lst) -> next;
-		free(lst);
-		lst = current;
-	}
-	lst = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 16:48:33 by ele-borg          #+#    #+#             */
-/*   Updated: 2024/08/27 00:06:09 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:23:35 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_int_check(int nv, char **arg)
 			while (arg[i][j] >= '0' && arg[i][j] <= '9')
 				j++;
 			while (arg[i][j] == ' ')
-				j++;	
+				j++;
 		}
 		if (arg[i][j] != '\0')
 			return (-1);
@@ -41,7 +41,7 @@ int	ft_int_check(int nv, char **arg)
 	return (0);
 }
 
-int	ft_cmp_lst(int  content, t_list **lst, int i)
+int	ft_cmp_lst(int content, t_list **lst, int i)
 {
 	t_list	*current;
 	int		k;
@@ -58,7 +58,7 @@ int	ft_cmp_lst(int  content, t_list **lst, int i)
 	return (0);
 }
 
-int	ft_check_double(t_list  **lst)
+int	ft_check_double(t_list **lst)
 {
 	t_list	*current;
 	int		i;
@@ -75,7 +75,7 @@ int	ft_check_double(t_list  **lst)
 	return (0);
 }
 
-int	ft_check_max_min(t_list  **lst)
+int	ft_check_max_min(t_list **lst)
 {
 	t_list	*current;
 	int		i;
