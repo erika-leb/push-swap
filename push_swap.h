@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:17:20 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/31 00:57:52 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:56:21 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_elements
 }	t_elements;
 
 t_list	*ft_lstnew(long content);
-t_list	*ft_lstnew2(long content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list **lst);
 t_list	*ft_lstlast(t_list *lst);
@@ -56,6 +55,7 @@ void	ft_push_x_to_y(t_list **lst_x, t_list **lst_y);
 void	ft_rotate(t_list **lst);
 void	ft_reverse_rotate(t_list **lst);
 
+int		ft_check_segment(int nv, char **arg, int i);
 int		ft_int_check(int nv, char **arg);
 int		ft_cmp_lst(int content, t_list **lst, int i);
 int		ft_check_double(t_list **lst);
@@ -68,6 +68,8 @@ int		ft_case_management(int nv, t_list	**lst_a, t_list	**lst_b);
 void	ft_two_arguments(t_list **lst);
 void	ft_instructions(long i, t_list **lst);
 void	ft_three_arguments(t_list **lst);
+int		ft_find_min_index(t_list *lst);
+void	ft_four_arguments(t_list **lst_a, t_list **lst_b);
 
 void	ft_return_median(t_list **lst, long	*median);
 long	ft_position_little(t_list **lst_a, long median);

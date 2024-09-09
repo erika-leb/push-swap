@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 16:48:33 by ele-borg          #+#    #+#             */
-/*   Updated: 2024/08/28 21:23:35 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:31:08 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,17 @@
 int	ft_int_check(int nv, char **arg)
 {
 	int	i;
-	int	j;
+	int	ret;
 
 	i = 1;
+		ret = ft_check_segment(nv, arg, i);
+	return (ret);
+}
+
+int	ft_check_segment(int nv, char **arg, int i)
+{
+	int	j;
+
 	while (i < nv)
 	{
 		j = 0;
@@ -31,6 +39,8 @@ int	ft_int_check(int nv, char **arg)
 				return (-1);
 			while (arg[i][j] >= '0' && arg[i][j] <= '9')
 				j++;
+			if (arg[i] && arg[i][j] && arg[i][j] != ' ')
+				return (-1);
 			while (arg[i][j] == ' ')
 				j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:32:21 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/01 16:28:06 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/09/02 23:34:52 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,6 @@ t_list	*ft_lstnew(long content)
 	new -> next = NULL;
 	return (new);
 }
-
-// t_list	*ft_lstnew2(long content)
-// {
-// 	t_list	*new;
-
-//  	if (content == 1)
-//     {
-//         write(2, "Erreur condition artificielle\n", 30);
-//         return (NULL);
-//     }
-// 	new = malloc(sizeof(t_list));
-// 	if (new == NULL)
-// 	{
-// 		write(2, "Erreur memory allocation\n", 26);
-// 		return (NULL);
-// 	}
-// 	new -> content = content;
-// 	new -> next = NULL;
-// 	return (new);
-// }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {

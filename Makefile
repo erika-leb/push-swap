@@ -6,31 +6,47 @@
 #    By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/24 09:17:32 by marvin            #+#    #+#              #
-#    Updated: 2024/08/30 23:45:51 by ele-borg         ###   ########.fr        #
+#    Updated: 2024/09/02 23:31:22 by ele-borg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #variables
 
+# Fichiers sources communs
+COMMON_FILES = instructions.c \
+               lst_functions_parta.c \
+               lst_functions_partb.c \
+			   error_management.c \
+			   utils_functions.c \
+
+# Fichiers spécifiques pour le programme principal
 SRC_FILES = push_swap.c \
-			error_management.c \
 			algorithm.c \
-			instructions.c \
-			lst_functions_parta.c \
-			lst_functions_partb.c \
-			utils_functions.c \
 			small_arguments.c \
 			five_arguments.c \
 			sense_rotation.c \
 			value_to_push.c \
 			numbers_of_instructions.c \
 			actions.c \
+			$(COMMON_FILES)
+
+# Fichiers spécifiques pour le bonus
+SRC_BONUS_FILES = checker_bonus.c \
+                  check_instruction_bonus.c \
+                  get_next_line.c \
+                  get_next_line_utils.c \
+				  error_bonus.c \
+                  $(COMMON_FILES)
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
+OBJ_BONUS_FILES = $(SRC_BONUS_FILES:.c=.o)
+
 NAME = push_swap
 
-FLAGS = -Wall -Wextra -Werror -I.
+NAME_BONUS = checker
+
+FLAGS = -Wall -Wextra -Werror -g3 -I.
 
 CC = cc
 
@@ -41,17 +57,22 @@ all: ${NAME}
 ${NAME}: ${OBJ_FILES}
 	${CC} ${FLAGS} ${OBJ_FILES} -o ${NAME}
 
-${OBJ_FILES}: %.o: %.c
-	${CC} -c ${FLAGS} $< -o $@
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJ_BONUS_FILES)
+	$(CC) $(FLAGS) $(OBJ_BONUS_FILES) -o $(NAME_BONUS)
+
+%.o: %.c
+	$(CC) -c $(FLAGS) $< -o $@
 
 clean: 
-	rm  -f ${OBJ_FILES}
+	rm  -f ${OBJ_FILES} ${OBJ_BONUS_FILES} 
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f ${NAME} ${NAME_BONUS}
 
 re: fclean all
 
 reclean : all clean
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

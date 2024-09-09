@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 14:38:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/04 17:57:12 by ele-borg         ###   ########.fr       */
+/*   Created: 2024/08/28 23:16:47 by ele-borg          #+#    #+#             */
+/*   Updated: 2024/09/02 17:47:55 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
+#include "get_next_line.h"
 
 t_list	*ft_get_arg_in_lst(char *str, int *j)
 {
@@ -61,27 +62,6 @@ int	ft_create_lst(t_list **lst, int nv, char **arg)
 	return (j);
 }
 
-int	ft_case_management(int nv, t_list **lst_a, t_list **lst_b)
-{
-	int	r;
-
-	if (nv == 3)
-		ft_two_arguments(lst_a);
-	else if (nv == 4)
-		ft_three_arguments(lst_a);
-	else if (nv == 5)
-		ft_four_arguments(lst_a, lst_b);
-	else if (nv == 6)
-		ft_five_arguments(lst_a, lst_b);
-	else
-	{
-		r = ft_atlgorithm(lst_a, lst_b);
-		if (r == 1)
-			return (1);
-	}
-	return (0);
-}
-
 int	main(int nv, char **arg)
 {
 	t_list		*lst_a;
@@ -101,11 +81,11 @@ int	main(int nv, char **arg)
 		if (ft_check_double(&lst_a) == -1 || ft_check_max_min(&lst_a) == -1)
 		{
 			write(2, "Error\n", 6);
-			(ft_lstclear(lst_a), ft_lstclear(lst_b));
+			ft_lstclear(lst_a);
+			ft_lstclear(lst_b);
 			return (0);
 		}
-		if (ft_in_cresent_order(&lst_a) == -1)
-			ft_case_management(nb, &lst_a, &lst_b);
+		ft_checker(&lst_a, &lst_b);
 		(ft_lstclear(lst_a), ft_lstclear(lst_b));
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ele-borg <ele-borg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:32:21 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/28 21:18:57 by ele-borg         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:56:02 by ele-borg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void	ft_lstclear(t_list *lst)
 {
 	t_list	*current;
 
+	if (lst == NULL)
+        return ;
+	current = lst;
 	while (lst != NULL)
 	{
 		current = (lst)-> next;
